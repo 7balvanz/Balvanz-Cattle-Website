@@ -286,3 +286,23 @@ a.portal-card:hover { border-color: var(--ink); }
 /* Header: plain "Home" link on the left, styled like the menu items */
 .home-link { font: 500 13px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; text-decoration: none; color: var(--ink); padding: 12px 0; }
 .home-link:hover { color: var(--accent); }
+
+/* Band: cropped photo (bull right of center), white fade at top, brand left, BQA on the ground */
+.band { height: clamp(460px, 52vw, 760px); background: #000; }
+.band img { object-position: 50% 42%; }
+.band::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 38%; z-index: 1; pointer-events: none;
+  background: linear-gradient(to bottom, #fff 0%, rgba(255,255,255,.85) 30%, rgba(255,255,255,.4) 65%, rgba(255,255,255,0) 100%); }
+.band-content { z-index: 2; flex-direction: row; align-items: flex-end; justify-content: space-between; gap: 40px; }
+.band-mark { width: 64px; height: 76px; opacity: .92; flex: none; }
+.band-bqa { display: flex; align-items: center; gap: 22px; max-width: 520px; color: rgba(244,244,242,.72); }
+.band-bqa img { position: static; width: 96px; height: auto; flex: none; object-fit: contain; }
+.band-bqa p { margin: 0; font: 400 14px/1.6 var(--sans); max-width: none; }
+.band-bqa strong { color: var(--bone); font-weight: 600; }
+@media (max-width: 760px) {
+  .band { height: 560px; }
+  .band img { object-position: 62% 40%; }
+  .band-content { flex-direction: column; align-items: flex-start; gap: 26px; }
+  .band-bqa img { width: 72px; }
+  .band-bqa p { font-size: 13px; }
+}
+.section-gallery { padding-bottom: clamp(24px, 3vw, 48px); }
