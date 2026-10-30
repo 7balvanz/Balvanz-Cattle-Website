@@ -280,3 +280,5 @@ a.portal-card:hover { border-color: var(--ink); }
 .logo-brand .logo-mark { width: 54px; height: 64px; }
 .portal-segments .segment-name { font-size: clamp(20px, 1.9vw, 25px); white-space: nowrap; }
 .portal-segments li { padding-left: 22px; gap: 14px; }
+/* Header spans the full window: brand near the left edge, menu near the right */
+.site-header .header-inner { max-width: none; padding: 0 clamp(20px, 3.2vw, 56px); }
