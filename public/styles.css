@@ -178,7 +178,9 @@ p { margin: 0 0 1.1em; }
   .nav-toggle[aria-expanded="true"] span:nth-of-type(2) { transform: translateY(3.75px) rotate(45deg); }
   .nav-toggle[aria-expanded="true"] span:nth-of-type(3) { transform: translateY(-3.75px) rotate(-45deg); }
   .hero-photo img { object-position: 68% 62%; }
-  .hero-meta { font-size: 11px; letter-spacing: .18em; line-height: 1.8; }
+  .hero-meta { font-size: 11px; letter-spacing: .18em; line-height: 1.4; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 0; max-width: 300px; margin: 0 auto; }
+  .hero-meta b { padding: 0 9px; }
+  .hero-meta span { display: none; }
   .hero-lede { font-size: 17px; }
   .field-row { grid-template-columns: 1fr; }
   .gallery { grid-template-columns: 1fr; gap: 8px; }
@@ -254,3 +256,9 @@ a.portal-card:hover { border-color: var(--ink); }
   .segment-list li:first-child { border-top: 0; }
 }
 .portal-segments { margin-bottom: clamp(32px, 4vw, 48px); }
+
+/* Ear tag number badge */
+.eartag { position: relative; flex: none; width: 33px; height: 46px; color: var(--ink); align-self: center; }
+.eartag svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.eartag b { position: absolute; left: 0; right: 0; top: 53%; text-align: center; font: 600 13px/1 var(--sans); letter-spacing: .02em; color: var(--paper); }
+.segment-list li:has(.eartag) { align-items: center; gap: 18px; }
