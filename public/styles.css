@@ -92,14 +92,12 @@ p { margin: 0 0 1.1em; }
 .split-img { margin: 0; }
 .split-img img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
 
-/* ---------- BQA ---------- */
-.bqa { background: var(--tint); padding: clamp(48px, 6vw, 72px) 0; }
-.bqa-inner { display: flex; align-items: center; gap: clamp(32px, 6vw, 80px); }
-.bqa-logo { width: clamp(150px, 18vw, 210px); height: auto; flex: none; }
-.bqa-text { max-width: 620px; padding-left: clamp(32px, 6vw, 80px); border-left: 1px solid var(--rule); }
-.bqa-text .eyebrow { margin-bottom: 14px; }
-.bqa-text h3 { font-size: clamp(24px, 2.4vw, 30px); margin-bottom: 10px; }
-.bqa-text p { color: var(--ink-soft); margin: 0; }
+/* ---------- BQA (compact gray strip) ---------- */
+.bqa { background: #ececea; padding: 26px 0; }
+.bqa-inner { display: flex; align-items: center; justify-content: center; gap: 28px; }
+.bqa-logo { width: 92px; height: auto; flex: none; }
+.bqa-text { margin: 0; max-width: 620px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+.bqa-text strong { color: var(--ink); font-weight: 600; }
 
 /* ---------- Pillars ---------- */
 .pillars { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(32px, 5vw, 64px); }
@@ -166,8 +164,9 @@ p { margin: 0 0 1.1em; }
   .split-img { order: -1; }
   .split-contact .split-text { order: 0; }
   .pillars { grid-template-columns: 1fr; gap: 36px; }
-  .bqa-inner { flex-direction: column; align-items: flex-start; }
-  .bqa-text { border-left: 0; padding-left: 0; }
+  .bqa-inner { gap: 18px; }
+  .bqa-logo { width: 70px; }
+  .bqa-text { font-size: 13px; }
 }
 @media (max-width: 760px) {
   .nav-toggle { display: block; }
@@ -235,3 +234,9 @@ a.portal-card:hover { border-color: var(--ink); }
 .portal-card .eyebrow { margin-bottom: 14px; }
 @media (max-width: 900px) { .portal-grid { grid-template-columns: 1fr; } }
 @media (max-width: 760px) { .portal-user span { display: none; } .footer-nav { gap: 18px; } }
+
+/* About photo without a frame (transparent cutout / faded edges) */
+.split-img-free img { aspect-ratio: auto; object-fit: contain; width: 100%; height: auto; }
+/* Gallery sits right under About */
+#about { padding-bottom: clamp(40px, 5vw, 64px); }
+.section-gallery { padding-top: 0; }
