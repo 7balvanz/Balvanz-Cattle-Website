@@ -253,3 +253,4 @@ a.portal-card:hover { border-color: var(--ink); }
   .segment-list li { border-left: 0; padding: 18px 0; border-top: 1px solid var(--rule); }
   .segment-list li:first-child { border-top: 0; }
 }
+.portal-segments { margin-bottom: clamp(32px, 4vw, 48px); }
