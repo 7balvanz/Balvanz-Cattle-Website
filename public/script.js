@@ -61,7 +61,7 @@
       if (window.turnstile) window.turnstile.reset();
       say("Thanks, your message is on its way. We'll be in touch soon.", "ok");
     } catch (err) {
-      say(err.message + " You can also email stevejr@balvanzcattle.com.", "err");
+      say(err.message + " Please try again shortly.", "err");
       if (window.turnstile) window.turnstile.reset();
     } finally {
       button.disabled = false;
