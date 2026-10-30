@@ -83,7 +83,7 @@ async function handleContact(request, env) {
     body: JSON.stringify({
       from: `Balvanz Cattle Website <${from}>`,
       to: [to],
-      reply_to: `${name} <${email}>`,
+      reply_to: email,
       subject,
       text,
     }),
