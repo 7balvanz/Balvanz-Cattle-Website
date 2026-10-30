@@ -22,8 +22,6 @@
   <link rel="preload" href="/fonts/inter-regular.woff" as="font" type="font/woff" crossorigin>
   <link rel="stylesheet" href="/styles.css">
 
-  <!-- Cloudflare Turnstile: free spam protection for the contact form -->
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -138,9 +136,6 @@
 
           <!-- Honeypot: hidden from people, bots fill it in -->
           <label class="hp" aria-hidden="true">Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label>
-
-          <!-- Replace with your Turnstile site key (see README) -->
-          <div class="cf-turnstile" data-sitekey="YOUR_TURNSTILE_SITE_KEY" data-theme="dark"></div>
 
           <button class="btn btn-light" type="submit">Send</button>
           <p class="form-status" role="status" aria-live="polite"></p>
