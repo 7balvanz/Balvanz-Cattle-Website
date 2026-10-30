@@ -1,0 +1,22 @@
+name = "balvanz-cattle"
+main = "src/worker.js"
+compatibility_date = "2026-10-01"
+
+# Everything in /public is served as the website
+[assets]
+directory = "./public"
+binding = "ASSETS"
+not_found_handling = "404-page"
+
+[vars]
+# Sender address. Must be on balvanzcattle.com (Email Routing enabled). It doesn't need to be a real mailbox.
+FROM_ADDRESS = "website@balvanzcattle.com"
+# Where form messages go. Must match destination_address below.
+CONTACT_TO = "YOUR_REAL_INBOX@gmail.com"
+
+# Free email sending to a verified Email Routing destination
+[[send_email]]
+name = "CONTACT_EMAIL"
+destination_address = "YOUR_REAL_INBOX@gmail.com"
+
+# Secret (set in the dashboard, NOT here): TURNSTILE_SECRET
