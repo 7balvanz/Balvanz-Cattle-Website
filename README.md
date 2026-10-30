@@ -17,25 +17,26 @@ logo/            brand mark + logo lockups, SVG (vector) and PNG (transparent)
 ### 1. Put the code on GitHub
 Create a private repo (e.g. `balvanz-cattle`) and push this folder to it.
 
-### 2. Move the domain's DNS from GoDaddy to Cloudflare
-1. Cloudflare dashboard → **Add a domain** → `balvanzcattle.com` → Free plan.
-2. Cloudflare imports the existing DNS records. **Delete** any GoDaddy parking or forwarding records (A records pointing at GoDaddy, "WebsiteBuilder" CNAMEs). If you have email hosted at GoDaddy or Microsoft 365 for this domain, say so before going further, because step 3 replaces the MX records.
-3. In GoDaddy → Domain → DNS: **turn off DNSSEC** if it's on.
-4. In GoDaddy → Domain → **Nameservers** → "I'll use my own nameservers" → enter the two Cloudflare nameservers.
-5. Wait until Cloudflare shows the domain as **Active** (usually under an hour, can take up to 24).
+### 2. Move the domain's DNS from GoDaddy to Cloudflare (keep Google Workspace email working)
+balvanzcattle.com email runs on **Google Workspace**. Nothing in this setup should change it.
+1. **Before you start**, screenshot the DNS records at GoDaddy, especially every **MX** record (Google), the **TXT** records starting `v=spf1` and `google-site-verification`, the **google._domainkey** DKIM TXT, and any **_dmarc** TXT.
+2. Cloudflare dashboard → **Add a domain** → `balvanzcattle.com` → Free plan.
+3. On Cloudflare's "review DNS records" screen, check that **every Google record from step 1 is there and identical**. Add any that are missing. Delete only GoDaddy parking/forwarding records (A records pointing at GoDaddy, "WebsiteBuilder" CNAMEs).
+4. GoDaddy → Domain → DNS: **turn off DNSSEC** if it's on.
+5. GoDaddy → Domain → **Nameservers** → "I'll use my own nameservers" → enter the two Cloudflare nameservers.
+6. When Cloudflare shows **Active**, send a test email to stevejr@balvanzcattle.com from another account to confirm mail still arrives.
 
-*Optional, later:* transfer the registration itself to Cloudflare Registrar (renews at cost, no markup). The domain must be at least 60 days past registration or its last transfer. Unlock it at GoDaddy, get the auth code, then start the transfer in Cloudflare → Domain Registration.
+*Optional, later:* transfer the registration itself to Cloudflare Registrar (renews at cost). Unlock at GoDaddy, get the auth code, start the transfer in Cloudflare → Domain Registration. Requires the domain to be 60+ days past registration or its last transfer.
 
-### 3. Set up email forwarding (stevejr@balvanzcattle.com)
-1. Cloudflare → balvanzcattle.com → **Email → Email Routing** → Enable → **Add records and enable**.
-2. **Destination addresses** → add the real inbox where mail should land (e.g. your Gmail) → click the link in the verification email.
-3. **Routing rules → Custom address**: `stevejr` → forward to that inbox.
-
-Email to stevejr@balvanzcattle.com now arrives in your inbox.
+### 3. Set up sending for the contact form (on a subdomain)
+**Do not turn on Email Routing for balvanzcattle.com.** It would replace Google's MX records and stop your email.
+1. Cloudflare → **Compute → Email Service → Email Sending → Onboard Domain** → enter the subdomain **`notify.balvanzcattle.com`**. Cloudflare adds its own SPF/DKIM/DMARC/bounce records on that subdomain only; the root domain's Google records are untouched.
+2. Add **stevejr@balvanzcattle.com** as a **verified destination address** (Email Service → Destination addresses) and click the link in the verification email that lands in Gmail.
+   - If Cloudflare only lets you verify destinations after enabling Email Routing somewhere, enable it on the **subdomain** `notify.balvanzcattle.com` only, never on the root domain.
+3. `wrangler.toml` is already set: sender `website@notify.balvanzcattle.com`, recipient `stevejr@balvanzcattle.com`.
 
 ### 4. Deploy the site
-1. Edit `wrangler.toml` and replace **both** `YOUR_REAL_INBOX@gmail.com` lines with the verified inbox from step 3. Commit and push.
-   > Cloudflare's free form sending can only deliver to a *verified destination* inbox, not to a forwarding alias. So the form sends straight to the same inbox stevejr@ forwards to, and the result is the same. Replies go back to the visitor automatically (Reply-To is set).
+1. Nothing to edit: `wrangler.toml` already points the form at stevejr@balvanzcattle.com. Replies go back to the visitor automatically (Reply-To is set).
 2. Cloudflare → **Workers & Pages → Create → Import a repository** → pick the repo. Defaults are fine (deploy command `npx wrangler deploy`).
 3. Worker → **Settings → Domains & Routes → Add → Custom domain**: `balvanzcattle.com`, then again for `www.balvanzcattle.com`.
 4. Every push to `main` redeploys automatically.

@@ -2,7 +2,8 @@
 // - Static files in /public are served automatically (see wrangler.toml [assets]).
 // - This code only runs for requests that don't match a file, e.g. POST /api/contact.
 // - Contact form messages are sent with Cloudflare's free send_email binding to the
-//   inbox verified in Email Routing (the same inbox stevejr@balvanzcattle.com forwards to).
+//   verified destination (the Google Workspace inbox), sent from a subdomain onboarded
+//   for Cloudflare Email Sending so the root domain's Google email is untouched.
 
 import { EmailMessage } from "cloudflare:email";
 

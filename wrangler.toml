@@ -13,14 +13,15 @@ binding = "ASSETS"
 not_found_handling = "404-page"
 
 [vars]
-# Sender address. Must be on balvanzcattle.com (Email Routing enabled). It doesn't need to be a real mailbox.
-FROM_ADDRESS = "website@balvanzcattle.com"
-# Where form messages go. Must match destination_address below.
-CONTACT_TO = "YOUR_REAL_INBOX@gmail.com"
+# Sender: a subdomain onboarded for Cloudflare Email Sending, so Google Workspace on
+# balvanzcattle.com (MX, SPF, DKIM, DMARC) is never touched. Not a real mailbox.
+FROM_ADDRESS = "website@notify.balvanzcattle.com"
+# Where form messages go (the Google Workspace inbox). Must match destination_address below.
+CONTACT_TO = "stevejr@balvanzcattle.com"
 
-# Free email sending to a verified Email Routing destination
+# Sends only to this one verified address (free; no arbitrary recipients)
 [[send_email]]
 name = "CONTACT_EMAIL"
-destination_address = "YOUR_REAL_INBOX@gmail.com"
+destination_address = "stevejr@balvanzcattle.com"
 
 # Secret (set in the dashboard, NOT here): TURNSTILE_SECRET
