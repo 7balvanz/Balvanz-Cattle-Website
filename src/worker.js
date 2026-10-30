@@ -104,6 +104,9 @@ async function handleContact(request, env) {
     wrap76(b64(text)),
   ].join("\r\n");
 
+  if (!env.CONTACT_EMAIL) {
+    return json({ ok: false, error: "The contact form isn't connected yet." }, 503);
+  }
   try {
     await env.CONTACT_EMAIL.send(new EmailMessage(from, to, raw));
   } catch (err) {

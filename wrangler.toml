@@ -20,8 +20,10 @@ FROM_ADDRESS = "website@notify.balvanzcattle.com"
 CONTACT_TO = "stevejr@balvanzcattle.com"
 
 # Sends only to this one verified address (free; no arbitrary recipients)
-[[send_email]]
-name = "CONTACT_EMAIL"
-destination_address = "stevejr@balvanzcattle.com"
+# TEMPORARILY OFF until notify.balvanzcattle.com is onboarded for Email Sending and
+# stevejr@ is verified. Uncomment these three lines then.
+# [[send_email]]
+# name = "CONTACT_EMAIL"
+# destination_address = "stevejr@balvanzcattle.com"
 
 # Secret (set in the dashboard, NOT here): TURNSTILE_SECRET
