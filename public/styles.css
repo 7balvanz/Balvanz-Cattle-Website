@@ -315,3 +315,13 @@ a.portal-card:hover { border-color: var(--ink); }
 .band-content { justify-content: flex-start; }
 @media (max-width: 760px) { .band-top .band-bqa { max-width: 100%; } .band-top .band-bqa img { width: 64px; } }
 @media (max-width: 760px) { .band-content { justify-content: flex-end; } }
+
+/* Cattle page */
+.cattle-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.cattle-list li { display: flex; align-items: center; gap: 28px; padding: clamp(22px, 3vw, 34px) 0; border-bottom: 1px solid var(--rule); }
+.cattle-name { font: 500 clamp(30px, 3.6vw, 48px)/1.1 var(--serif); }
+.eartag-lg { width: 46px; height: 64px; }
+.eartag-lg b { font-size: 17px; }
+.section-tight-bottom { padding: clamp(48px, 6vw, 80px) 0; }
+.cattle-cta { display: flex; justify-content: center; }
+.subpage .bqa { margin-top: clamp(56px, 8vw, 110px); padding: 34px 0; }

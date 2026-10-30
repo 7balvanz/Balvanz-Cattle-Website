@@ -68,6 +68,9 @@ Send yourself a message from the form. It should arrive within a minute with the
 
 ---
 
+## Cattle page
+`public/cattle/index.html` lists Cow-Calf, Feeder Cattle, Finished Cattle and Bulls, with the BQA certification band. It is public.
+
 ## Adding bulls
 Listings come from `public/bulls/bulls.json`. Until it has entries, the page reads "No bulls are listed at this time." Example:
 
