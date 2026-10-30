@@ -50,13 +50,14 @@ Email to stevejr@balvanzcattle.com now arrives in your inbox.
 ### 6. Redirect www → balvanzcattle.com
 Cloudflare → balvanzcattle.com → **Rules → Redirect Rules → Create** → template "Redirect from WWW to root" → 301.
 
-### 7. Client portal login (Cloudflare Access, free up to 50 users)
-The Client Login button goes to `/clients/`. Cloudflare Access protects that page, so clients sign in with their email and a one-time code. There are no passwords to manage.
+### 7. Customer portal login (Cloudflare Access, free up to 50 users)
+The Customer Portal button goes to `/clients/`. Cloudflare Access protects that page, so clients sign in with their email and a one-time code. There are no passwords to manage.
 1. Cloudflare dashboard → **Zero Trust** (pick the Free plan if asked).
 2. **Settings → Authentication → Login methods**: make sure **One-time PIN** is on.
 3. **Access → Applications → Add an application → Self-hosted**:
-   - Name: `Balvanz Cattle Client Portal`
+   - Name: `Balvanz Cattle Customer Portal`
    - Domain: `balvanzcattle.com`, path: `clients`
+   - Add a second destination: `balvanzcattle.com`, path: `bulls` (Bulls now lives inside the customer portal)
    - Policy: **Allow**, Include → **Emails** → add each client's email (and your own).
 4. **Settings → Custom pages / Login page**: set the organization name to *Balvanz Cattle*, upload `logo/brand-mark.png` and set the background to `#1d1b18`, so the sign-in screen matches the site.
 

@@ -262,3 +262,21 @@ a.portal-card:hover { border-color: var(--ink); }
 .eartag svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .eartag b { position: absolute; left: 0; right: 0; top: 53%; text-align: center; font: 600 13px/1 var(--sans); letter-spacing: .02em; color: var(--paper); }
 .segment-list li:has(.eartag) { align-items: center; gap: 18px; }
+
+/* Header: brand mark alone is the home button */
+.logo-brand .logo-mark { width: 46px; height: 55px; }
+.site-header .header-inner { height: 84px; }
+.subpage main { padding-top: 84px; }
+.hero { padding-top: 84px; }
+.site-nav { margin-left: auto; }
+/* Portal: four cattle types, Bulls links through */
+.portal-segments { grid-template-columns: repeat(4, 1fr); }
+.segment-link { display: flex; align-items: center; gap: 18px; text-decoration: none; color: inherit; }
+.segment-link .segment-name { border-bottom: 1px solid var(--rule); }
+.segment-link:hover .segment-name { border-color: var(--ink); }
+.portal-grid { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 900px) { .portal-segments { grid-template-columns: repeat(2, 1fr); } .portal-segments li:nth-child(3) { border-left: 0; padding-left: 0; } }
+@media (max-width: 760px) { .logo-brand .logo-mark { width: 40px; height: 48px; } .site-nav { inset: 84px 0 auto; } }
+.logo-brand .logo-mark { width: 54px; height: 64px; }
+.portal-segments .segment-name { font-size: clamp(20px, 1.9vw, 25px); white-space: nowrap; }
+.portal-segments li { padding-left: 22px; gap: 14px; }

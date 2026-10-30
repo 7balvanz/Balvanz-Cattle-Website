@@ -46,18 +46,16 @@
 
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="logo" href="/" aria-label="Balvanz Cattle home">
+      <a class="logo logo-brand" href="/" aria-label="Balvanz Cattle home">
         <svg class="logo-mark"><use href="#brand"/></svg>
-        <span class="logo-text"><span class="logo-name">Balvanz</span><span class="logo-sub">Cattle</span></span>
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
         <span class="sr-only">Menu</span><span></span><span></span>
       </button>
       <nav class="site-nav" id="site-nav">
         <a href="/#about">About</a>
-        <a href="/bulls/">Bulls</a>
         <a href="/#contact">Contact</a>
-        <a href="/clients/" class="nav-cta"><svg class="icon-lock" aria-hidden="true"><use href="#lock"/></svg>Client Login</a>
+        <a href="/clients/" class="nav-cta"><svg class="icon-lock" aria-hidden="true"><use href="#lock"/></svg>Customer Portal</a>
       </nav>
     </div>
   </header>
@@ -124,9 +122,9 @@
         <div class="split-text">
           <p class="eyebrow">Contact</p>
           <h2>Business inquiries</h2>
-          <p>For bull inquiries, client accounts, or other business, use the form or email us directly.</p>
+          <p>For customer accounts or other business, use the form or email us directly.</p>
           <p class="contact-alt"><a href="mailto:stevejr@balvanzcattle.com">stevejr@balvanzcattle.com</a></p>
-          <p class="contact-alt contact-portal">Existing clients<br><a href="/clients/">Sign in to the client portal →</a></p>
+          <p class="contact-alt contact-portal">Existing customers<br><a href="/clients/">Sign in to the customer portal →</a></p>
         </div>
 
         <form class="contact-form" id="contact-form" action="/api/contact" method="post" novalidate>
@@ -141,9 +139,8 @@
               <input type="tel" name="phone" autocomplete="tel" maxlength="40"></label>
             <label class="field"><span>Regarding</span>
               <select name="topic">
-                <option>Bull inquiry</option>
-                <option>Client account</option>
                 <option>General</option>
+                <option>Customer account</option>
               </select></label>
           </div>
           <label class="field"><span>Message</span>
@@ -169,9 +166,9 @@
         <span class="logo-text"><span class="logo-name">Balvanz</span><span class="logo-sub">Cattle</span></span>
       </a>
       <nav class="footer-nav">
-        <a href="/bulls/">Bulls</a>
-        <a href="/clients/">Client Login</a>
+        <a href="/#about">About</a>
         <a href="/#contact">Contact</a>
+        <a href="/clients/">Customer Portal</a>
       </nav>
       <div class="footer-meta">
         <span>Black Angus &nbsp;·&nbsp; Iowa &nbsp;·&nbsp; Since 1886 &nbsp;·&nbsp; BQA Certified</span>
