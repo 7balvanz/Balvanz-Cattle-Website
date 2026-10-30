@@ -1,11 +1,8 @@
 // Balvanz Cattle site Worker
 // - Static files in /public are served automatically (see wrangler.toml [assets]).
 // - This code only runs for requests that don't match a file, e.g. POST /api/contact.
-// - Contact form messages are sent with Cloudflare's free send_email binding to the
-//   verified destination (the Google Workspace inbox), sent from a subdomain onboarded
-//   for Cloudflare Email Sending so the root domain's Google email is untouched.
-
-import { EmailMessage } from "cloudflare:email";
+// - Contact form email goes out through Resend's free tier from website@notify.balvanzcattle.com,
+//   so Google Workspace on balvanzcattle.com is never touched.
 
 const json = (body, status = 200) =>
   new Response(JSON.stringify(body), {
@@ -17,20 +14,6 @@ const json = (body, status = 200) =>
 const oneLine = (s, max) => String(s || "").replace(/[\r\n]+/g, " ").trim().slice(0, max);
 const isEmail = (s) => /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(s);
 
-// RFC 2047 encoding for non-ASCII header text (names, subjects)
-const b64 = (str) => {
-  const bytes = new TextEncoder().encode(str);
-  let bin = "";
-  for (const b of bytes) bin += String.fromCharCode(b);
-  return btoa(bin);
-};
-const encHeader = (s) => {
-  if (/^[\x20-\x7e]*$/.test(s)) return s;
-  const chars = Array.from(s), words = [];
-  for (let i = 0; i < chars.length; i += 30) words.push(`=?UTF-8?B?${b64(chars.slice(i, i + 30).join(""))}?=`);
-  return words.join("\r\n "); // folded so each encoded word stays under 75 chars
-};
-const wrap76 = (s) => s.replace(/.{1,76}/g, "$&\r\n");
 
 async function verifyTurnstile(token, secret, ip) {
   const body = new FormData();
@@ -72,9 +55,8 @@ async function handleContact(request, env) {
     if (!passed) return json({ ok: false, error: "Spam check failed. Please try again." }, 400);
   }
 
-  const from = env.FROM_ADDRESS;          // e.g. website@balvanzcattle.com
-  const to = env.CONTACT_TO;              // verified destination: stevejr@balvanzcattle.com (Google Workspace)
-  const domain = from.split("@")[1];
+  const from = env.FROM_ADDRESS;          // website@notify.balvanzcattle.com (verified in Resend)
+  const to = env.CONTACT_TO;              // stevejr@balvanzcattle.com
   const subject = `Website: ${topic} from ${name}`;
 
   const text = [
@@ -88,29 +70,26 @@ async function handleContact(request, env) {
     message,
     ``,
     `-- Reply to this email to answer ${name} directly.`,
-  ].join("\r\n");
+  ].join("\n");
 
-  const raw = [
-    `From: ${encHeader("Balvanz Cattle Website")} <${from}>`,
-    `To: <${to}>`,
-    `Reply-To: ${encHeader(name)} <${email}>`,
-    `Subject: ${encHeader(subject)}`,
-    `Date: ${new Date().toUTCString()}`,
-    `Message-ID: <${crypto.randomUUID()}@${domain}>`,
-    `MIME-Version: 1.0`,
-    `Content-Type: text/plain; charset=UTF-8`,
-    `Content-Transfer-Encoding: base64`,
-    ``,
-    wrap76(b64(text)),
-  ].join("\r\n");
-
-  if (!env.CONTACT_EMAIL) {
+  if (!env.RESEND_API_KEY) {
     return json({ ok: false, error: "The contact form isn't connected yet." }, 503);
   }
-  try {
-    await env.CONTACT_EMAIL.send(new EmailMessage(from, to, raw));
-  } catch (err) {
-    console.error("send_email failed:", err && err.message);
+
+  // Send through Resend (free tier). The API key is a Worker secret, never in the code.
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      from: `Balvanz Cattle Website <${from}>`,
+      to: [to],
+      reply_to: `${name} <${email}>`,
+      subject,
+      text,
+    }),
+  });
+  if (!res.ok) {
+    console.error("Resend failed:", res.status, await res.text().catch(() => ""));
     return json({ ok: false, error: "We couldn't send your message right now." }, 502);
   }
   return json({ ok: true });

@@ -5,7 +5,7 @@ The site for **balvanzcattle.com**. It's a static site served by a Cloudflare Wo
 ```
 public/          the website (HTML, CSS, JS, images, fonts)
   images/        site photos (resized, location data removed)
-src/worker.js    contact form handler → emails stevejr@ via Cloudflare Email Sending
+src/worker.js    contact form handler → emails stevejr@ via Resend (free)
 wrangler.toml    Cloudflare config (edit the two inbox lines before deploying)
 logo/            brand mark + logo lockups, SVG (vector) and PNG (transparent)
 ```
@@ -28,12 +28,12 @@ balvanzcattle.com email runs on **Google Workspace**. Nothing in this setup shou
 
 *Optional, later:* transfer the registration itself to Cloudflare Registrar (renews at cost). Unlock at GoDaddy, get the auth code, start the transfer in Cloudflare → Domain Registration. Requires the domain to be 60+ days past registration or its last transfer.
 
-### 3. Set up sending for the contact form (on a subdomain)
-**Do not turn on Email Routing for balvanzcattle.com.** It would replace Google's MX records and stop your email.
-1. Cloudflare → **Compute → Email Service → Email Sending → Onboard Domain** → enter the subdomain **`notify.balvanzcattle.com`**. Cloudflare adds its own SPF/DKIM/DMARC/bounce records on that subdomain only; the root domain's Google records are untouched.
-2. Add **stevejr@balvanzcattle.com** as a **verified destination address** (Email Service → Destination addresses) and click the link in the verification email that lands in Gmail.
-   - If Cloudflare only lets you verify destinations after enabling Email Routing somewhere, enable it on the **subdomain** `notify.balvanzcattle.com` only, never on the root domain.
-3. `wrangler.toml` is already set: sender `website@notify.balvanzcattle.com`, recipient `stevejr@balvanzcattle.com`.
+### 3. Contact form email (Resend, free)
+Cloudflare Email Routing can't be used here: it would replace Google's MX records on balvanzcattle.com. The form sends through **Resend** (free: 3,000 emails/month) from `website@notify.balvanzcattle.com` instead. Only the `notify` subdomain gets new DNS records; Google is untouched.
+1. Sign up at resend.com (free).
+2. **Domains → Add domain** → `notify.balvanzcattle.com`. Use Resend's **Cloudflare auto-configure** if offered, or add the records it lists in Cloudflare DNS. Every record must be on `notify.balvanzcattle.com` (or a name ending in it). Wait for **Verified**.
+3. **API Keys → Create** → permission **Sending access**, domain `notify.balvanzcattle.com`. Copy the key.
+4. Cloudflare → Workers → **balvanz-cattle → Settings → Variables and Secrets → Add** → type **Secret**, name `RESEND_API_KEY`, paste the key → Deploy.
 
 ### 4. Deploy the site
 1. Nothing to edit: `wrangler.toml` already points the form at stevejr@balvanzcattle.com. Replies go back to the visitor automatically (Reply-To is set).

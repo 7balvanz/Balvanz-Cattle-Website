@@ -13,17 +13,10 @@ binding = "ASSETS"
 not_found_handling = "404-page"
 
 [vars]
-# Sender: a subdomain onboarded for Cloudflare Email Sending, so Google Workspace on
-# balvanzcattle.com (MX, SPF, DKIM, DMARC) is never touched. Not a real mailbox.
+# Contact form: sent via Resend (free) from a subdomain verified in Resend.
+# Google Workspace on balvanzcattle.com (MX, SPF, DKIM) is never touched.
 FROM_ADDRESS = "website@notify.balvanzcattle.com"
-# Where form messages go (the Google Workspace inbox). Must match destination_address below.
 CONTACT_TO = "stevejr@balvanzcattle.com"
 
-# Sends only to this one verified address (free; no arbitrary recipients)
-# TEMPORARILY OFF until notify.balvanzcattle.com is onboarded for Email Sending and
-# stevejr@ is verified. Uncomment these three lines then.
-# [[send_email]]
-# name = "CONTACT_EMAIL"
-# destination_address = "stevejr@balvanzcattle.com"
-
-# Secret (set in the dashboard, NOT here): TURNSTILE_SECRET
+# Secret (set in the Cloudflare dashboard, NOT here): RESEND_API_KEY
+# Optional secret: TURNSTILE_SECRET
