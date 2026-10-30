@@ -5,7 +5,7 @@ The site for **balvanzcattle.com**. It's a static site served by a Cloudflare Wo
 ```
 public/          the website (HTML, CSS, JS, images, fonts)
   images/        site photos (resized, location data removed)
-src/worker.js    contact form handler → emails you via Email Routing
+src/worker.js    contact form handler → emails stevejr@ via Cloudflare Email Sending
 wrangler.toml    Cloudflare config (edit the two inbox lines before deploying)
 logo/            brand mark + logo lockups, SVG (vector) and PNG (transparent)
 ```

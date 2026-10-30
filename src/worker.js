@@ -73,7 +73,7 @@ async function handleContact(request, env) {
   }
 
   const from = env.FROM_ADDRESS;          // e.g. website@balvanzcattle.com
-  const to = env.CONTACT_TO;              // your verified Email Routing destination
+  const to = env.CONTACT_TO;              // verified destination: stevejr@balvanzcattle.com (Google Workspace)
   const domain = from.split("@")[1];
   const subject = `Website: ${topic} from ${name}`;
 
