@@ -240,3 +240,16 @@ a.portal-card:hover { border-color: var(--ink); }
 /* Gallery sits right under About */
 #about { padding-bottom: clamp(40px, 5vw, 64px); }
 .section-gallery { padding-top: 0; }
+
+/* Operation segments row */
+.segments { padding: 0 0 clamp(40px, 5vw, 64px); }
+.segment-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.segment-list li { display: flex; align-items: baseline; gap: 16px; padding: 26px 0 26px 28px; border-left: 1px solid var(--rule); }
+.segment-list li:first-child { border-left: 0; padding-left: 0; }
+.segment-num { font: 500 12px/1 var(--sans); letter-spacing: .14em; color: var(--accent); }
+.segment-name { font: 500 clamp(22px, 2.2vw, 28px)/1.2 var(--serif); }
+@media (max-width: 700px) {
+  .segment-list { grid-template-columns: 1fr; }
+  .segment-list li { border-left: 0; padding: 18px 0; border-top: 1px solid var(--rule); }
+  .segment-list li:first-child { border-top: 0; }
+}
