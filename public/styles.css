@@ -301,7 +301,8 @@ a.portal-card:hover { border-color: var(--ink); }
 @media (max-width: 760px) {
   .band { height: 560px; }
   .band img { object-position: 62% 40%; }
-  .band-content { flex-direction: column; align-items: flex-start; gap: 26px; }
+  .band-content { flex-direction: column; align-items: flex-start; justify-content: flex-end; gap: 26px; padding-bottom: 36px; }
+  .band { height: 620px; }
   .band-bqa img { width: 72px; }
   .band-bqa p { font-size: 13px; }
 }
