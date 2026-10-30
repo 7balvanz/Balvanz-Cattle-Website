@@ -307,3 +307,11 @@ a.portal-card:hover { border-color: var(--ink); }
   .band-bqa p { font-size: 13px; }
 }
 .section-gallery { padding-bottom: clamp(24px, 3vw, 48px); }
+
+/* BQA sits in the white sky at the top of the band (dark logo and text) */
+.band-top { position: absolute; left: 0; right: 0; top: clamp(28px, 4vw, 56px); z-index: 2; }
+.band-top .band-bqa { color: var(--ink-soft); }
+.band-top .band-bqa strong { color: var(--ink); }
+.band-content { justify-content: flex-start; }
+@media (max-width: 760px) { .band-top .band-bqa { max-width: 100%; } .band-top .band-bqa img { width: 64px; } }
+@media (max-width: 760px) { .band-content { justify-content: flex-end; } }
