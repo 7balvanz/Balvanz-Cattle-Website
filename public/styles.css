@@ -282,3 +282,7 @@ a.portal-card:hover { border-color: var(--ink); }
 .portal-segments li { padding-left: 22px; gap: 14px; }
 /* Header spans the full window: brand near the left edge, menu near the right */
 .site-header .header-inner { max-width: none; padding: 0 clamp(20px, 3.2vw, 56px); }
+
+/* Header: plain "Home" link on the left, styled like the menu items */
+.home-link { font: 500 13px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; text-decoration: none; color: var(--ink); padding: 12px 0; }
+.home-link:hover { color: var(--accent); }
