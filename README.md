@@ -50,10 +50,43 @@ Email to stevejr@balvanzcattle.com now arrives in your inbox.
 ### 6. Redirect www → balvanzcattle.com
 Cloudflare → balvanzcattle.com → **Rules → Redirect Rules → Create** → template "Redirect from WWW to root" → 301.
 
-### 7. Test
+### 7. Client portal login (Cloudflare Access, free up to 50 users)
+The Client Login button goes to `/clients/`. Cloudflare Access protects that page, so clients sign in with their email and a one-time code. There are no passwords to manage.
+1. Cloudflare dashboard → **Zero Trust** (pick the Free plan if asked).
+2. **Settings → Authentication → Login methods**: make sure **One-time PIN** is on.
+3. **Access → Applications → Add an application → Self-hosted**:
+   - Name: `Balvanz Cattle Client Portal`
+   - Domain: `balvanzcattle.com`, path: `clients`
+   - Policy: **Allow**, Include → **Emails** → add each client's email (and your own).
+4. **Settings → Custom pages / Login page**: set the organization name to *Balvanz Cattle*, upload `logo/brand-mark.png` and set the background to `#1d1b18`, so the sign-in screen matches the site.
+
+To add or remove a client, edit that policy's email list. **Do this before launch.** Until Access is on, `/clients/` is public (it holds no private data, but it should still be locked).
+
+### 8. Test
 Send yourself a message from the form. It should arrive within a minute with the subject "Website: General question from …". Hit Reply and it goes to the sender.
 
 ---
+
+## Adding bulls
+Listings come from `public/bulls/bulls.json`. Until it has entries, the page reads "No bulls are listed at this time." Example:
+
+```json
+[
+  {
+    "name": "Balvanz Ironside 412",
+    "status": "Available",
+    "tag": "412",
+    "registration": "AAA 20xxxxxx",
+    "breed": "Angus",
+    "born": "March 2025",
+    "sire": "…",
+    "dam": "…",
+    "notes": "Calving ease, docile.",
+    "photo": "/images/bulls/412.jpg"
+  }
+]
+```
+Every field except `name` is optional. Put bull photos in `public/images/bulls/`.
 
 ## Making changes
 - **Swap a photo:** replace the file in `public/images/` with one of the same name (both the full and `-sm` sizes). Keep photos ~1800px wide, JPEG quality ~80.

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Client Portal · Balvanz Cattle</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#1d1b18">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<!--
+  This page is protected by Cloudflare Access (see README, "Client portal").
+  Visitors must sign in with an approved email address before Cloudflare will serve it.
+-->
+<body class="subpage portal">
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="brand" viewBox="0 0 260 310">
+      <g fill="none" stroke="currentColor" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M48 30 Q130 8 212 28"/>
+        <path d="M84 62 V246"/>
+        <path d="M84 62 H124 C168 62 186 82 186 106 C186 130 166 150 124 150 H84"/>
+        <path d="M84 150 H132 C180 150 204 174 204 200 C204 228 180 246 132 246 H84"/>
+        <path d="M14 264 Q130 318 246 266"/>
+      </g>
+    </symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="logo" href="/" aria-label="Balvanz Cattle home">
+        <svg class="logo-mark"><use href="#brand"/></svg>
+        <span class="logo-text"><span class="logo-name">Balvanz</span><span class="logo-sub">Cattle</span></span>
+      </a>
+      <div class="portal-user">
+        <span id="portal-email"></span>
+        <a href="/cdn-cgi/access/logout" class="nav-cta">Sign out</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section section-page">
+      <div class="wrap">
+        <div class="page-head">
+          <p class="eyebrow">Client Portal</p>
+          <h1>Welcome<span id="portal-name"></span>.</h1>
+          <p class="page-intro">Your account with Balvanz Cattle.</p>
+        </div>
+
+        <div class="portal-grid">
+          <a class="portal-card" href="/bulls/">
+            <p class="eyebrow">Offering</p>
+            <h2>Bulls</h2>
+            <p>Current bull listings. Records and pricing are available on request.</p>
+            <span class="btn-link">View bulls <span aria-hidden="true">→</span></span>
+          </a>
+          <div class="portal-card">
+            <p class="eyebrow">Documents</p>
+            <h2>Records &amp; documents</h2>
+            <p>Invoices, health records, and registration papers for your purchases are sent to you directly. Contact us if you need a copy.</p>
+          </div>
+          <a class="portal-card" href="mailto:stevejr@balvanzcattle.com">
+            <p class="eyebrow">Account</p>
+            <h2>Contact</h2>
+            <p>Questions about an order, delivery, or your account.</p>
+            <span class="btn-link">stevejr@balvanzcattle.com</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <a class="logo logo-footer" href="/" aria-label="Balvanz Cattle home">
+        <svg class="logo-mark"><use href="#brand"/></svg>
+        <span class="logo-text"><span class="logo-name">Balvanz</span><span class="logo-sub">Cattle</span></span>
+      </a>
+      <div class="footer-meta">
+        <span>Iowa &nbsp;·&nbsp; Since 1886 &nbsp;·&nbsp; BQA Certified</span>
+        <span>© <span id="year">2026</span> Balvanz Cattle</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/script.js" defer></script>
+  <script>
+    // Show who is signed in (Cloudflare Access provides this on protected pages)
+    fetch("/cdn-cgi/access/get-identity", { credentials: "same-origin" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((id) => {
+        if (id && id.email) document.getElementById("portal-email").textContent = id.email;
+        if (id && id.name) document.getElementById("portal-name").textContent = ", " + id.name.split(" ")[0];
+      })
+      .catch(() => {});
+  </script>
+</body>
+</html>

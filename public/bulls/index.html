@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bulls · Balvanz Cattle</title>
+  <meta name="description" content="Bulls offered by Balvanz Cattle, a family cattle operation in Iowa since 1886.">
+  <link rel="canonical" href="https://balvanzcattle.com/bulls/">
+  <meta name="theme-color" content="#1d1b18">
+  <meta property="og:title" content="Bulls · Balvanz Cattle">
+  <meta property="og:image" content="https://balvanzcattle.com/images/og-image.jpg">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="subpage">
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="brand" viewBox="0 0 260 310">
+      <g fill="none" stroke="currentColor" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M48 30 Q130 8 212 28"/>
+        <path d="M84 62 V246"/>
+        <path d="M84 62 H124 C168 62 186 82 186 106 C186 130 166 150 124 150 H84"/>
+        <path d="M84 150 H132 C180 150 204 174 204 200 C204 228 180 246 132 246 H84"/>
+        <path d="M14 264 Q130 318 246 266"/>
+      </g>
+    </symbol>
+    <symbol id="lock" viewBox="0 0 16 16">
+      <path d="M4.5 7V5a3.5 3.5 0 0 1 7 0v2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <rect x="3" y="7" width="10" height="7.5" rx="1" fill="currentColor"/>
+    </symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="logo" href="/" aria-label="Balvanz Cattle home">
+        <svg class="logo-mark"><use href="#brand"/></svg>
+        <span class="logo-text"><span class="logo-name">Balvanz</span><span class="logo-sub">Cattle</span></span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Menu</span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav">
+        <a href="/#about">About</a>
+        <a href="/bulls/" aria-current="page">Bulls</a>
+        <a href="/#contact">Contact</a>
+        <a href="/clients/" class="nav-cta"><svg class="icon-lock" aria-hidden="true"><use href="#lock"/></svg>Client Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-banner">
+      <picture>
+        <source media="(max-width: 800px)" srcset="/images/bull-header-sm.jpg">
+        <img src="/images/bull-header.jpg" alt="A Balvanz bull standing on the hillside at dusk">
+      </picture>
+    </section>
+
+    <section class="section section-page">
+      <div class="wrap">
+        <div class="page-head">
+          <p class="eyebrow">Bulls</p>
+          <h1>Bulls</h1>
+          <p class="page-intro">Bulls offered by Balvanz Cattle. Records, pricing, and availability are provided on request.</p>
+        </div>
+
+        <!-- Listings load from /bulls/bulls.json (see README) -->
+        <div class="bull-list" id="bull-list" aria-live="polite"></div>
+
+        <div class="bull-empty" id="bull-empty" hidden>
+          <p>No bulls are listed at this time.</p>
+          <p>For upcoming availability, <a href="/#contact">contact us</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <a class="logo logo-footer" href="/" aria-label="Balvanz Cattle home">
+        <svg class="logo-mark"><use href="#brand"/></svg>
+        <span class="logo-text"><span class="logo-name">Balvanz</span><span class="logo-sub">Cattle</span></span>
+      </a>
+      <nav class="footer-nav">
+        <a href="/bulls/">Bulls</a>
+        <a href="/clients/">Client Login</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+      <div class="footer-meta">
+        <span>Iowa &nbsp;·&nbsp; Since 1886 &nbsp;·&nbsp; BQA Certified</span>
+        <span>© <span id="year">2026</span> Balvanz Cattle</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/script.js" defer></script>
+  <script src="/bulls/bulls.js" defer></script>
+</body>
+</html>

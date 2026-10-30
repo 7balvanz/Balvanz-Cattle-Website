@@ -2,6 +2,10 @@ name = "balvanz-cattle"
 main = "src/worker.js"
 compatibility_date = "2026-10-01"
 
+# Only serve on balvanzcattle.com, so nobody can reach /clients/ through a *.workers.dev address
+workers_dev = false
+preview_urls = false
+
 # Everything in /public is served as the website
 [assets]
 directory = "./public"

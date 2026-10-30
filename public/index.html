@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Balvanz Cattle · Family Cattle Operation in Iowa</title>
-  <meta name="description" content="The Balvanz family has raised cattle since 1886. A family-run, BQA-certified cattle operation in Iowa.">
+  <title>Balvanz Cattle · Since 1886</title>
+  <meta name="description" content="Balvanz Cattle. A family cattle operation in Iowa, raising cattle since 1886. BQA certified.">
   <link rel="canonical" href="https://balvanzcattle.com/">
   <meta name="theme-color" content="#1d1b18">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Balvanz Cattle">
-  <meta property="og:title" content="Balvanz Cattle">
-  <meta property="og:description" content="Raising cattle since 1886. A family-run, BQA-certified operation in Iowa.">
+  <meta property="og:title" content="Balvanz Cattle · Since 1886">
+  <meta property="og:description" content="A family cattle operation in Iowa, raising cattle since 1886. BQA certified.">
   <meta property="og:url" content="https://balvanzcattle.com/">
   <meta property="og:image" content="https://balvanzcattle.com/images/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -38,11 +38,15 @@
         <path d="M14 264 Q130 318 246 266"/>
       </g>
     </symbol>
+    <symbol id="lock" viewBox="0 0 16 16">
+      <path d="M4.5 7V5a3.5 3.5 0 0 1 7 0v2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <rect x="3" y="7" width="10" height="7.5" rx="1" fill="currentColor"/>
+    </symbol>
   </svg>
 
-  <header class="site-header" id="top">
+  <header class="site-header">
     <div class="wrap header-inner">
-      <a class="logo" href="#top" aria-label="Balvanz Cattle home">
+      <a class="logo" href="/" aria-label="Balvanz Cattle home">
         <svg class="logo-mark"><use href="#brand"/></svg>
         <span class="logo-text"><span class="logo-name">Balvanz</span><span class="logo-sub">Cattle</span></span>
       </a>
@@ -50,9 +54,10 @@
         <span class="sr-only">Menu</span><span></span><span></span>
       </button>
       <nav class="site-nav" id="site-nav">
-        <a href="#farm">The Farm</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact" class="nav-cta">Contact</a>
+        <a href="/#about">About</a>
+        <a href="/bulls/">Bulls</a>
+        <a href="/#contact">Contact</a>
+        <a href="/clients/" class="nav-cta"><svg class="icon-lock" aria-hidden="true"><use href="#lock"/></svg>Client Login</a>
       </nav>
     </div>
   </header>
@@ -62,13 +67,8 @@
     <section class="hero">
       <div class="wrap hero-content">
         <svg class="hero-mark" role="img" aria-label="The Balvanz family brand"><use href="#brand"/></svg>
-        <p class="eyebrow">Since 1886 &nbsp;·&nbsp; BQA Certified</p>
-        <h1>Good cattle, raised by family.</h1>
-        <p class="hero-lede">A family cattle operation in the hills of Iowa, built on hard work, good stock, and doing things right.</p>
-        <div class="hero-actions">
-          <a class="btn btn-dark" href="#contact">Get in touch</a>
-          <a class="btn-link" href="#farm">See the farm <span aria-hidden="true">→</span></a>
-        </div>
+        <h1 class="hero-name">Balvanz Cattle</h1>
+        <p class="hero-meta">Since 1886 <span>·</span> Iowa <span>·</span> BQA Certified</p>
       </div>
       <picture class="hero-photo">
         <source media="(max-width: 800px)" srcset="/images/hero-sm.jpg">
@@ -76,14 +76,13 @@
       </picture>
     </section>
 
-    <!-- THE FARM -->
-    <section class="section" id="farm">
+    <!-- ABOUT -->
+    <section class="section" id="about">
       <div class="wrap split">
         <div class="split-text">
-          <p class="eyebrow">The Farm</p>
+          <p class="eyebrow">About</p>
           <h2>Raising cattle since 1886.</h2>
-          <p>The Balvanz family has been raising cattle in America since 1886. More than 140 years later, we're still at it in Iowa. Our cows raise their calves on pasture, and family looks after them every day: checking the herd, putting up hay, and handling cattle the right way.</p>
-          <p>We keep things simple: healthy cattle, honest dealings, and a handshake that means something. If you have questions about our cattle, we'd be glad to hear from you.</p>
+          <p>The Balvanz family has been raising cattle in America since 1886. Today the operation is run by the family in Iowa, with cows and calves on pasture and the herd managed to Beef Quality Assurance standards.</p>
         </div>
         <figure class="split-img">
           <img src="/images/cow-and-calf.jpg" srcset="/images/cow-and-calf-sm.jpg 900w, /images/cow-and-calf.jpg 1800w" sizes="(max-width: 900px) 100vw, 55vw" alt="Cow number 1116 with her newborn calf nursing" loading="lazy">
@@ -96,43 +95,17 @@
       <div class="wrap bqa-inner">
         <img class="bqa-logo" src="/images/bqa-logo.png" alt="Beef Quality Assurance" width="720" height="415" loading="lazy">
         <div class="bqa-text">
-          <p class="eyebrow">Certified</p>
+          <p class="eyebrow">Certification</p>
           <h3>Beef Quality Assurance certified</h3>
-          <p>Our farm is BQA certified, which means we follow the national Beef Quality Assurance guidelines for animal care, low-stress handling, herd health, and record keeping.</p>
+          <p>Our operation follows the national Beef Quality Assurance guidelines for animal care, low-stress handling, herd health, and record keeping.</p>
         </div>
       </div>
     </section>
 
-    <!-- PRINCIPLES -->
-    <section class="section section-tight">
+    <!-- OPERATION -->
+    <section class="section">
       <div class="wrap">
-        <ul class="pillars">
-          <li>
-            <span class="pillar-num">01</span>
-            <h3>Raised here</h3>
-            <p>Our calves are born, raised, and cared for on our own Iowa pasture.</p>
-          </li>
-          <li>
-            <span class="pillar-num">02</span>
-            <h3>Handled with care</h3>
-            <p>Calm, low-stress handling and attention to herd health, every season of the year.</p>
-          </li>
-          <li>
-            <span class="pillar-num">03</span>
-            <h3>Straight answers</h3>
-            <p>Ask us anything about our cattle. You'll get a real answer from a real person.</p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section class="section" id="gallery">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="eyebrow">Gallery</p>
-          <h2>Life on the farm.</h2>
-        </div>
+        <p class="eyebrow">The Operation</p>
         <div class="gallery">
           <a class="g" href="/images/herd.jpg"><img src="/images/herd-sm.jpg" srcset="/images/herd-sm.jpg 800w, /images/herd.jpg 1800w" sizes="(max-width: 700px) 100vw, 50vw" alt="Black and Hereford cows lined up in a spring pasture" loading="lazy"></a>
           <a class="g" href="/images/branded-cow.jpg"><img src="/images/branded-cow-sm.jpg" srcset="/images/branded-cow-sm.jpg 800w, /images/branded-cow.jpg 1800w" sizes="(max-width: 700px) 100vw, 50vw" alt="A cow wearing the Balvanz brand on her hip" loading="lazy"></a>
@@ -156,9 +129,10 @@
       <div class="wrap split split-contact">
         <div class="split-text">
           <p class="eyebrow">Contact</p>
-          <h2>Let's talk cattle.</h2>
-          <p>Questions about our cattle, availability, or anything else? Send us a note and we'll get back to you, usually within a day or two.</p>
-          <p class="contact-alt">Prefer email?<br><a href="mailto:stevejr@balvanzcattle.com">stevejr@balvanzcattle.com</a></p>
+          <h2>Business inquiries</h2>
+          <p>For bull inquiries, client accounts, or other business, use the form or email us directly.</p>
+          <p class="contact-alt"><a href="mailto:stevejr@balvanzcattle.com">stevejr@balvanzcattle.com</a></p>
+          <p class="contact-alt contact-portal">Existing clients<br><a href="/clients/">Sign in to the client portal →</a></p>
         </div>
 
         <form class="contact-form" id="contact-form" action="/api/contact" method="post" novalidate>
@@ -171,11 +145,11 @@
           <div class="field-row">
             <label class="field"><span>Phone <em>(optional)</em></span>
               <input type="tel" name="phone" autocomplete="tel" maxlength="40"></label>
-            <label class="field"><span>Topic</span>
+            <label class="field"><span>Regarding</span>
               <select name="topic">
-                <option>General question</option>
-                <option>Cattle inquiry</option>
-                <option>Other</option>
+                <option>Bull inquiry</option>
+                <option>Client account</option>
+                <option>General</option>
               </select></label>
           </div>
           <label class="field"><span>Message</span>
@@ -184,10 +158,10 @@
           <!-- Honeypot: hidden from people, bots fill it in -->
           <label class="hp" aria-hidden="true">Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label>
 
-          <!-- Replace with your Turnstile site key (see README step 5) -->
+          <!-- Replace with your Turnstile site key (see README) -->
           <div class="cf-turnstile" data-sitekey="YOUR_TURNSTILE_SITE_KEY" data-theme="dark"></div>
 
-          <button class="btn btn-light" type="submit">Send message</button>
+          <button class="btn btn-light" type="submit">Send</button>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -196,10 +170,15 @@
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
-      <a class="logo logo-footer" href="#top" aria-label="Back to top">
+      <a class="logo logo-footer" href="/" aria-label="Balvanz Cattle home">
         <svg class="logo-mark"><use href="#brand"/></svg>
         <span class="logo-text"><span class="logo-name">Balvanz</span><span class="logo-sub">Cattle</span></span>
       </a>
+      <nav class="footer-nav">
+        <a href="/bulls/">Bulls</a>
+        <a href="/clients/">Client Login</a>
+        <a href="/#contact">Contact</a>
+      </nav>
       <div class="footer-meta">
         <span>Iowa &nbsp;·&nbsp; Since 1886 &nbsp;·&nbsp; BQA Certified</span>
         <span>© <span id="year">2026</span> Balvanz Cattle</span>
